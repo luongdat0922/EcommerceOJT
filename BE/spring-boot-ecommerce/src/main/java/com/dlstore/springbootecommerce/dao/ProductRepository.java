@@ -12,4 +12,6 @@ import com.dlstore.springbootecommerce.entity.Product;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	Page<Product> findByCategoryId(@Param("id") Long id, Pageable pageable);
+	
+	Page<Product> findByNameContaining(@Param("name") String name, Pageable pageable);
 }
