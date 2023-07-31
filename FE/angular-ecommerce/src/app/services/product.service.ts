@@ -12,6 +12,7 @@ export class ProductService {
   private baseUrl = 'http://localhost:8080/api/products';
 
   private categoryUrl = 'http://localhost:8080/api/product_category';
+  
   constructor(private httpCLient: HttpClient) { }
 
   getProduct(theProductId: number): Observable<Product> {
