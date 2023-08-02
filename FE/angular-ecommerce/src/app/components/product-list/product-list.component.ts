@@ -21,6 +21,7 @@ export class ProductListComponent implements OnInit {
     private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    // at ngOnInit, when url change then list product is update
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     })
