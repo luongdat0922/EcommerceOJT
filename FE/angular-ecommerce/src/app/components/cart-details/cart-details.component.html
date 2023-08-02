@@ -25,18 +25,18 @@
 
                                 <div class="row no-gutters">
                                     <div class="col">
-                                        <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-plus"></i>
+                                        <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
 
-                                    <div class="col ml-4 mr-2">
+                                    <div class="col ml-4 text-center">
                                         {{ tempCartItem.quantity }}
                                     </div>
 
                                     <div class="col">
-                                        <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-minus"></i>
+                                        <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
 

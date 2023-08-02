@@ -51,6 +51,11 @@ export class ProductService {
       map(response => response._embedded.productCategory)
     );
   }
+
+  deleteProduct(idProduct: number, idTag: number): Observable<any> {
+
+    return this.httpCLient.delete(`${this.baseUrl}/${idProduct}/tags/${idTag}`)
+  }
 }
 
 interface GetResponseProducts {
