@@ -4,6 +4,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: 'cart-details', component: CartDetailsComponent },
@@ -13,6 +15,17 @@ const routes: Routes = [
   { path: 'category', component: ProductListComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'checkout', component: CheckoutComponent },
+  {
+    path: "login", component: LoginComponent
+  },
+  {
+    path: "register", component: RegisterComponent
+  }, 
+  { 
+    path: 'admin',
+    loadChildren: () => 
+    import('./categories/categories.module').then((b) => b.CategoriesModule)
+  },
   { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: '**', redirectTo: '/products', pathMatch: 'full' }
 ];

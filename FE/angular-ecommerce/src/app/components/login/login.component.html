@@ -1,0 +1,64 @@
+<div class="main-content">
+    <div class="row ml-2">
+        <aside class="col-sm-4">
+    
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title mb-4 mt-1 text-center">Sign In</h4>
+                    <hr>
+                    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input name="username" class="form-control" placeholder="lvshop" [(ngModel)]="form.username"
+                                required minlength="3" maxlength="20" #username="ngModel" type="text">
+                            <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                                <div *ngIf="username.errors['required']">Username is required</div>
+                                <div *ngIf="username.errors['minlength']">
+                                    Username must be at least 3 characters
+                                </div>
+                                <div *ngIf="username.errors['maxlength']">
+                                    Username must be at most 20 characters
+                                </div>
+                            </div>
+                        </div> <!-- form-group// -->
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input class="form-control" placeholder="*******" type="password" name="password"
+                                [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+                            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                                <div *ngIf="password.errors['required']">Password is required</div>
+                                <div *ngIf="password.errors['minlength']">
+                                    Password must be at least 6 characters
+                                </div>
+                            </div>
+                        </div> <!-- form-group// -->
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label> <input type="checkbox"> Remember me </label>
+                            </div> <!-- checkbox .// -->
+                        </div> <!-- form-group// -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block"> Login </button>
+                                </div> <!-- form-group// -->
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <a class="small" href="register">Register a new membership</a>
+                            </div>
+                        </div> <!-- .row// -->
+                        <div class="form-group">
+                            <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                                Login failed: {{ errorMessage }}
+                            </div>
+                        </div>
+                    </form>
+                    <div class="alert alert-success" *ngIf="isLoggedIn">
+                        Logged in as {{ roles }}.
+                    </div>
+                </article>
+            </div> <!-- card.// -->
+    
+        </aside> <!-- col.// -->
+    </div>
+</div>

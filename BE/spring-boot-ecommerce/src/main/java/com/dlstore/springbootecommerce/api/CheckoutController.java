@@ -6,8 +6,8 @@ import com.dlstore.springbootecommerce.dto.Purchase;
 import com.dlstore.springbootecommerce.dto.PurchaseResponse;
 import com.dlstore.springbootecommerce.services.CheckoutService;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/checkout")
 public class CheckoutController {
 
@@ -23,6 +23,7 @@ public class CheckoutController {
         PurchaseResponse purchaseResponse = checkoutService.placeOrder(purchase);
 
         return purchaseResponse;
+        
     }
 
 }
