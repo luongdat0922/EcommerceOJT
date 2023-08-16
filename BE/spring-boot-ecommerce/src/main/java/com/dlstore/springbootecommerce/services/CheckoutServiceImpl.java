@@ -7,6 +7,7 @@ import com.dlstore.springbootecommerce.dao.CustomerRepository;
 import com.dlstore.springbootecommerce.dto.Purchase;
 import com.dlstore.springbootecommerce.dto.PurchaseResponse;
 import com.dlstore.springbootecommerce.entity.Customer;
+import com.dlstore.springbootecommerce.entity.EStatus;
 import com.dlstore.springbootecommerce.entity.Order;
 import com.dlstore.springbootecommerce.entity.OrderItem;
 
@@ -32,6 +33,7 @@ public class CheckoutServiceImpl implements CheckoutService {
         // generate tracking number
         String orderTrackingNumber = generateOrderTrackingNumber();
         order.setOrderTrackingNumber(orderTrackingNumber);
+        order.setStatus(EStatus.Processing);
 
         // populate order with orderItems
         Set<OrderItem> orderItems = purchase.getOrderItems();

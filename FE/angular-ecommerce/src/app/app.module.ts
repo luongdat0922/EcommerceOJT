@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducer } from './shared/store/app.reducer';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RegisterComponent } from './components/register/register.component';
     CheckoutComponent,
     LoginComponent,
     RegisterComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
