@@ -2,11 +2,11 @@
     <div class="section-content section-content-p30">
         <div class="container-fluid">
             <div class="mb-2">
-                <span>Start Date: <input type="date" [(ngModel)]="startDate"></span> |
-                <span>End Date: <input type="date" [(ngModel)]="endDate"></span>
+                <span>Start Date: <input class="text-center" type="date" [(ngModel)]="startDate"></span> |
+                <span>End Date: <input class="text-center" type="date" [(ngModel)]="endDate"></span>
             </div>
-            <p>{{ totalOrders }} - {{ totalPriceCompleted }} / {{ totalPrice }}</p>
-            <button (click)="submitDates()">Submit</button>
+            <p>Total Orders: {{ totalOrders }} - {{ totalPriceCompleted }} / {{ totalPrice }}</p>
+            <button class="btn btn-primary" (click)="submitDates()">Submit</button>
             <div style="width: 600px; height: 600px;">
                 <canvas id="myChart"></canvas>
             </div>

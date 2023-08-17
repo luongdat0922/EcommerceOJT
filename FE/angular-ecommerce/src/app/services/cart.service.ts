@@ -75,7 +75,9 @@ export class CartService {
 
   decrementQuantity(theCartItem: CartItem) {
 
-    theCartItem.quantity--;
+    if (theCartItem.quantity > 1) {
+      theCartItem.quantity--;
+    }
 
     if (theCartItem.quantity === 0) {
       this.remove(theCartItem);
