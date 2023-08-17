@@ -3,7 +3,6 @@
         <div class="container-fluid">
             <div class="row">
                 <aside class="col-sm-4">
-            
                     <div class="card">
                         <article class="card-body">
                             <h4 class="card-title mb-4 mt-1 text-center">Sign In</h4>
@@ -11,7 +10,7 @@
                             <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                                 <div class="form-group">
                                     <label class="mb-2">Username</label>
-                                    <input name="username" class="form-control mb-2" placeholder="lvshop" [(ngModel)]="form.username"
+                                    <input name="username" class="form-control mb-2" placeholder="sussie" [(ngModel)]="form.username"
                                         required minlength="3" maxlength="20" #username="ngModel" type="text">
                                     <div class="alert-danger" *ngIf="username.errors && f.submitted">
                                         <div *ngIf="username.errors['required']">Username is required</div>
