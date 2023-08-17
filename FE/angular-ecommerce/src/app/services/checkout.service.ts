@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Purchase } from '../common/purchase';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class CheckoutService {
   currentUser: any;
   headers: HttpHeaders;
 
-  constructor(private httpClient: HttpClient) {
-    this.headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJpYXQiOjE2OTIxOTU1NjYsImV4cCI6MTY5MjI4MTk2Nn0.ItxolbhrIwqcuLA-nAxyprMwaCEZTVXwuNJhtTgl76I')
+  constructor(private httpClient: HttpClient, private storageService: StorageService) {
+    this.currentUser = this.storageService.getUser();
+    console.log(this.currentUser.accessToken);
+    this.headers = new HttpHeaders().set('Authorization', `Bearer ${this.currentUser.accessToken}`)
     .set('Content-Type', 'application/json; charset=utf-8');;
   }
 
