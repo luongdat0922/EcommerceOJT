@@ -29,7 +29,7 @@ public class GalleryController {
 	@Autowired(required = true)
 	private FileStorageService storageService;
 
-	@PostMapping("/upload")
+	@PostMapping
 	@PreAuthorize("hasRole('ROLE_MODERATOR') or hasRole('ROLE_ADMIN')")
 	public ResponseEntity<MessageResponse> uploadFile(@RequestParam("file") MultipartFile file) {
 		String message = "";

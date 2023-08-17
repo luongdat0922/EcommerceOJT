@@ -24,6 +24,7 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     const currentDate = new Date();
     this.startDate = currentDate.toISOString().substring(0, 10);
+    console.log(this.startDate);
     this.endDate = currentDate.toISOString().substring(0, 10);
 
     this.fetchOrders();
@@ -31,7 +32,7 @@ export class ChartComponent implements OnInit {
   }
 
   fetchOrders(): void {
-    this.chartService.getOrders(new Date(this.startDate), new Date(this.endDate)).subscribe(orders => {
+    this.chartService.getOrders(this.startDate, this.endDate).subscribe(orders => {
       this.orders = orders;
       const statusCount = this.countStatus(orders);
       this.updateChart(statusCount);
@@ -40,41 +41,49 @@ export class ChartComponent implements OnInit {
   }
 
   countStatus(orders: OrderResponse[]): { [status: string]: number } {
+    const statusOrder = ['Processing', 'Confirmed', 'Shipping', 'Success', 'Cancelled'];
+
     const statusCount: { [status: string]: number } = {};
+
+    statusOrder.forEach(status => {
+      statusCount[status] = 0;
+    });
+
     orders.forEach(order => {
       const status = order.status;
-      if (statusCount[status]) {
+      if (statusCount[status] !== undefined) {
         statusCount[status]++;
-      } else {
-        statusCount[status] = 1;
       }
     });
+
     return statusCount;
   }
 
   submitDates(): void {
     const start = new Date(this.startDate);
     const end = new Date(this.endDate);
-  
+
+    if (end < start) {
+      alert('End date should be greater than or equal to start date');
+      return;
+    }
+
     const timeDiff = Math.abs(end.getTime() - start.getTime());
     const diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-  
+
     if (diffDays > 30) {
-      alert('Khoảng cách giữa hai ngày không được vượt quá 30 ngày');
-      // Perform other actions if needed
-    } else {
-      alert('Khoảng cách giữa hai ngày hợp lệ');
-      this.fetchOrders(); // Fetch orders based on selected dates
-      // Perform other actions if needed
-      console.log(this.orders);
+      alert('The interval between two dates should not exceed 30 days');
+      return;
     }
+
+    this.fetchOrders();
   }
 
   drawChart(): void {
     const myChart = new Chart("myChart", {
       type: 'bar',
       data: {
-        labels: ['Processing', 'Confirmed', 'Delivered', 'Completed', 'Cancelled'],
+        labels: ['Processing', 'Confirmed', 'Shipping', 'Success', 'Cancelled'],
         datasets: [{
           label: '# of Status',
           data: [0, 0, 0, 0, 0],
@@ -103,7 +112,7 @@ export class ChartComponent implements OnInit {
     this.totalOrders = orders.length;
     this.totalPrice = orders.reduce((total, order) => total + order.totalPrice, 0);
     this.totalPriceCompleted = orders
-      .filter(order => order.status === "Completed")
+      .filter(order => order.status === "Success")
       .reduce((total, order) => total + order.totalPrice, 0);
   }
 }
