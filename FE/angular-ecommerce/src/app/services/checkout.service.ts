@@ -14,7 +14,7 @@ export class CheckoutService {
   headers: HttpHeaders;
 
   constructor(private httpClient: HttpClient) {
-    this.headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJpYXQiOjE2OTIxNzc3OTQsImV4cCI6MTY5MjI2NDE5NH0.Z5r03lMvKTCjiXhsbN38vuQZ8URUvzQnePUR1Gj5lrk')
+    this.headers = new HttpHeaders().set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJpYXQiOjE2OTIxOTU1NjYsImV4cCI6MTY5MjI4MTk2Nn0.ItxolbhrIwqcuLA-nAxyprMwaCEZTVXwuNJhtTgl76I')
     .set('Content-Type', 'application/json; charset=utf-8');;
   }
 

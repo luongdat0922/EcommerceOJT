@@ -1,4 +1,4 @@
-export class Chart {
+export class OrderResponse {
     id: number;
     orderTrackingNumber: string;
     totalQuantity: number;
