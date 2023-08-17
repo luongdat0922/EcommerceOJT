@@ -8,7 +8,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import java.util.HashSet;
@@ -36,6 +38,10 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Order> orders = new HashSet<>();
+    
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    private User user;
 
     public void add(Order order) {
 

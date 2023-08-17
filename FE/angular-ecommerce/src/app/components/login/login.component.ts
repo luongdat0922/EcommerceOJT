@@ -19,14 +19,20 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private storageService: StorageService,
+    private router: Router,
+    ) {
+   
+  }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().roles;
       setTimeout(() => {
-        
+
         if (this.roles.some(item => item.includes('ROLE_MODERATOR')) || this.roles.some(item => item.includes('ROLE_ADMIN'))) {
           this.router.navigate(['/dashboard']);
         } else {
