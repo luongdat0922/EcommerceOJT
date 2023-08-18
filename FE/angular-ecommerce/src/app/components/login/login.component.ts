@@ -32,13 +32,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().roles;
       setTimeout(() => {
-
-        if (this.roles.some(item => item.includes('ROLE_MODERATOR')) || this.roles.some(item => item.includes('ROLE_ADMIN'))) {
-          this.router.navigate(['/dashboard']);
-        } else {
           this.router.navigate(['/home']);
-        }
-
       }, 500);
     }
   }
